@@ -17,6 +17,7 @@ W folderze głównym repozytorium uruchom:
 ```
 $ python -m blankiety_galantow
 ```
+
 ### Dostępne opcje
 ```
 usage: blankiety_galantow [-h] [--port PORT] [--host HOST] [--reload] [--log-level LOG_LEVEL]
@@ -36,6 +37,19 @@ Można również uruchomić serwer HTTP samodzielnie:
 uvicorn blankiety_galantow.app:app
 ```
 i wykorzystać wszystkie [opcje uruchomienia Uvicorna](https://www.uvicorn.org/deployment/)
+
+## Zbudowanie obrazu Dockera
+
+W katalogu głównym projektu uruchom:
+```
+docker build -t blankiety:latest .
+```
+
+Następnie możesz uruchomić instancję aplikacji w kontenerze. Blankiety Galantów nasłuchują w kontenerze portu `8080`. Możesz do tego portu zmapować dowolny, wybrany port w systemie hosta. Przykład uruchomienia obrazu `blankiety:latest`:
+```
+docker run --name blankiety_app -p 3000:8080 -d blankiety:latest
+```
+Po takim uruchomieniu kontenera, aplikacja jest dostępna pod adresem, m. in. `localhost:3000` na systemie hosta. 
 
 ## Zasady projektu
 Zajrzyj do [tego dokumentu](CONTRIBUTING.md).
